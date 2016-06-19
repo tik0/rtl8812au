@@ -28,12 +28,9 @@ struct ch_freq {
 };
 
 struct ch_freq ch_freq_map[] = {
-#if defined(CONFIG_2G)
 	{1, 2412},{2, 2417},{3, 2422},{4, 2427},{5, 2432},
 	{6, 2437},{7, 2442},{8, 2447},{9, 2452},{10, 2457},
 	{11, 2462},{12, 2467},{13, 2472},{14, 2484},
-#endif
-#if defined(CONFIG_5G)
 	/*  UNII */
 	{36, 5180},{40, 5200},{44, 5220},{48, 5240},{52, 5260},
 	{56, 5280},{60, 5300},{64, 5320},{149, 5745},{153, 5765},
@@ -50,7 +47,6 @@ struct ch_freq ch_freq_map[] = {
 	{208, 5040},/* Japan, means J08 */
 	{212, 5060},/* Japan, means J12 */
 	{216, 5080},/* Japan, means J16 */
-#endif
 };
 
 int ch_freq_map_num = (sizeof(ch_freq_map) / sizeof(struct ch_freq));
