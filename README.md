@@ -1,3 +1,9 @@
+## TODO
+
+In the current master branch, the module `/lib/modules/3.19.0-yocto-standard/extra/8812au.ko` is not installed.
+In the AMiRo brnach it is installed.
+What is the difference?
+
 ## Realtek 802.11ac (rtl8812au)
 
 This is a fork of the Realtek 802.11ac (rtl8812au) v4.2.2 (7502.20130507)
