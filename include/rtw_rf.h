@@ -42,8 +42,15 @@
 // {36,40,44,48,52,56,60,64,100,104,108,112,116,120,124,128,132,136,140,149,153,157,161,165}
 #define	MAX_CHANNEL_NUM_2G				14
 #define	MAX_CHANNEL_NUM_5G				24
-#define	MAX_CHANNEL_NUM					38//14+24
-
+#if defined(CONFIG_2G) && defined(CONFIG_5G)
+#define MAX_CHANNEL_NUM					38//MAX_CHANNEL_NUM_2G + MAX_CHANNEL_NUM_5G
+#elif defined(CONFIG_2G)
+#define	MAX_CHANNEL_NUM					14//MAX_CHANNEL_NUM_2G
+#elif defined(CONFIG_5G)
+#define MAX_CHANNEL_NUM					24//MAX_CHANNEL_NUM_5G
+#else
+#error No frequency band configured
+#endif
 //#define NUM_REGULATORYS	21
 #define NUM_REGULATORYS	1
 
