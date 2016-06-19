@@ -42,7 +42,15 @@ int rtw_lbkmode = 0;//RTL8712_AIR_TRX;
 int rtw_network_mode = Ndis802_11IBSS;//Ndis802_11Infrastructure;//infra, ad-hoc, auto
 //NDIS_802_11_SSID	ssid;
 int rtw_channel = 1;//ad-hoc support requirement
+#if defined(CONFIG_2G) && defined(CONFIG_5G)
 int rtw_wireless_mode = WIRELESS_MODE_MAX;
+#elif defined(CONFIG_2G)
+int rtw_wireless_mode = WIRELESS_MODE_24G;
+#elif defined(CONFIG_5G)
+int rtw_wireless_mode = WIRELESS_MODE_5G;
+#else
+#error No band configured
+#endif
 int rtw_vrtl_carrier_sense = AUTO_VCS;
 int rtw_vcs_type = RTS_CTS;//*
 int rtw_rts_thresh = 2347;//*

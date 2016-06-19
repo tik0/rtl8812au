@@ -21,7 +21,7 @@
 #define __RTW_MLME_H_
 
 
-#define	MAX_BSS_CNT	128
+#define	MAX_BSS_CNT	1024
 //#define   MAX_JOIN_TIMEOUT	2000
 //#define   MAX_JOIN_TIMEOUT	2500
 #define   MAX_JOIN_TIMEOUT	6500
@@ -29,7 +29,7 @@
 //	Commented by Albert 20101105
 //	Increase the scanning timeout because of increasing the SURVEY_TO value.
 
-#define 	SCANNING_TIMEOUT 	8000
+#define 	SCANNING_TIMEOUT 	9000
 
 #define	SCAN_INTERVAL	(30) // unit:2sec, 30*2=60sec
 
