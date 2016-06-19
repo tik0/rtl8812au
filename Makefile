@@ -86,6 +86,7 @@ CONFIG_PLATFORM_ARM_SUNxI = n
 CONFIG_PLATFORM_ARM_SUN6I = n
 CONFIG_PLATFORM_ACTIONS_ATM702X = n
 CONFIG_PLATFORM_ACTIONS_ATV5201 = n
+CONFIG_PLATFORM_ARM_AMIRO_YOCTO = y
 
 CONFIG_DRVEXT_MODULE = n
 
@@ -981,6 +982,14 @@ KVER  := $(KERNEL_VER)
 KSRC:= $(CFGDIR)/../../kernel/linux-$(KERNEL_VER)
 endif
 
+ifeq ($(CONFIG_PLATFORM_ARM_AMIRO_YOCTO), y)
+EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN
+# Set by Yocto
+ARCH :=
+CROSS_COMPILE :=
+KVER := $(KERNEL_VERSION)
+KSRC := $(KERNEL_SRC)
+endif
 
 ifeq ($(CONFIG_MULTIDRV), y)	
 
@@ -1060,6 +1069,9 @@ all: modules
 
 modules:
 	$(MAKE) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) -C $(KSRC) M=$(shell pwd)  modules
+
+modules_install:
+       $(MAKE) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) -C $(KSRC) M=$(shell pwd)  modules_install
 
 strip:
 	$(CROSS_COMPILE)strip $(MODULE_NAME).ko --strip-unneeded
